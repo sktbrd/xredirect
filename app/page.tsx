@@ -8,19 +8,22 @@ const TwitterRedirect = () => {
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
       sentence
     )}`;
+    // navigate to https://shapeshift.com/rareevo
+    window.location.href = 'https://shapeshift.com/rareevo';
     window.open(url, '_blank');
   };
 
   useEffect(() => {
-    handleClick();
+    if (!window.location.hash) {
+      window.location.hash = 'init';
+      handleClick();
+      // auto close the window immediately
+      window.close();
+    }
   }, []);
 
-
   return (
-    <div>
-      <h1>Twitter Redirect</h1>
-      <button onClick={handleClick}>Tweet</button>
-    </div>
+    <img src="https://assets.coingecko.com/coins/images/9988/large/FOX.png?1696510025" alt="background" className="bg-image" />
   );
 };
 
